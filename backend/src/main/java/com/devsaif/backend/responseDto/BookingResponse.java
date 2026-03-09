@@ -1,4 +1,4 @@
-package com.devsaif.backend.response;
+package com.devsaif.backend.responseDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

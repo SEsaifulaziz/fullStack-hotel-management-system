@@ -1,8 +1,6 @@
-package com.devsaif.backend.response;
+package com.devsaif.backend.responseDto;
 
 
-import com.devsaif.backend.model.BookedRoom;
-import com.devsaif.backend.model.Room;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
