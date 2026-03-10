@@ -42,7 +42,7 @@ public class RoomController {
         return ResponseEntity.ok(roomResponse);
     }
 
-    @GetMapping("/room/getAll-rooms")
+    @GetMapping("/room/all-rooms")
     public ResponseEntity<List<RoomResponse>> getAllRooms() throws SQLException {
         List<Room> rooms = roomService.getAllRooms();
         List<RoomResponse> roomResponses = new ArrayList<>();
