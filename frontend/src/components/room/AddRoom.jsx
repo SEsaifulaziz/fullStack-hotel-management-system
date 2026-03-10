@@ -5,8 +5,8 @@ import RoomTypeSelector from "../common/RoomTypeSelector";
 const AddRoom = () => {
     const [newRoom, setNewRoom] = useState({
         photo : null,
-        roomType: null,
-        roomPrice: null,
+        roomType: "",
+        roomPrice: "",
     })
 
     const [imagePreview, setImagePreview] = useState("");
@@ -16,13 +16,7 @@ const AddRoom = () => {
     const handleRoomInputChange = (e) => {
         const name = e.target.name;
         let value = e.target.value;
-        if(name === "roomType") {
-          if(!isNaN(value)){
-              value.parseInt(value)
-          }else {
-              value =""
-          }
-        }
+
         setNewRoom({...newRoom, [name]: value})
     }
 
@@ -37,8 +31,8 @@ const AddRoom = () => {
         try{
             const success = await addRoom(newRoom.photo, newRoom.roomType, newRoom.roomPrice)
             if(success !== undefined){
-                setSuccessMessage("A new Room has been added successfully")
-                setNewRoom({photo : "", roomType: "", roomPrice: ""})
+                setSuccessMessage("A new Room has been added successfully!")
+                setNewRoom({photo : null, roomType: "", roomPrice: ""})
                 setImagePreview("")
                 setErrorMessage("")
             }
@@ -53,10 +47,13 @@ const AddRoom = () => {
 
     return (
         <>
-            <section className="container, mt-5 mb-5">
+            <section className="container mt-5 mb-5">
                 <div className="row justify-content-center">
                     <div className="col-md-8 col-lg-6">
                         <h2 className="mb-5 mb-2"> Add a New Room</h2>
+                        
+                        {successMessage && <div className="alert alert-success">{successMessage}</div>}
+                        {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
 
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
