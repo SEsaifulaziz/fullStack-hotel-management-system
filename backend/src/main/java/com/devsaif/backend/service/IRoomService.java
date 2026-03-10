@@ -14,6 +14,8 @@ import java.util.function.BiFunction;
 public interface IRoomService {
 
     Room addNewRoom(MultipartFile photo, String roomType, BigDecimal roomPrice) throws SQLException, IOException;
+    List<Room> getAllRooms();
     List<String> getAllRoomTypes();
 
+    byte[] getRoomPhotoByRoomId(Long roomId) throws SQLException;
 }
