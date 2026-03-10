@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { getRoomTypes } from '../utils/ApiFunctions';
 
 const RoomTypeSelector = ({ handleNewRoomInputChange, newRoom }) => {
-    const [roomTypes, setRoomTypes] = useState([""]);
-    const [showNewRoomTypesInput, setShowNewRoomTypesInput] = useState(false);
+    const [roomTypes, setRoomTypes] = useState([]);
+    const [showNewRoomTypeInput, setShowNewRoomTypeInput] = useState(false);
     const [newRoomType, setNewRoomType] = useState("");
 
     useEffect(() => {
@@ -16,8 +16,16 @@ const RoomTypeSelector = ({ handleNewRoomInputChange, newRoom }) => {
         setNewRoomType(e.target.value);
     }
 
-    const handleAddNewRoomTypeChange = () => {
+    const handleAddNewRoomType = () => {
         if(newRoomType!== "") {
+            const event ={
+                target: {
+                    name: "roomType",
+                    value: newRoomType
+                }
+            }
+            handleNewRoomInputChange(event);
+        
             setRoomTypes([...roomTypes, newRoomType])  
             setNewRoomType("");
             setShowNewRoomTypesInput(false);
@@ -30,17 +38,18 @@ const RoomTypeSelector = ({ handleNewRoomInputChange, newRoom }) => {
         {roomTypes.length > 0 && (
             <div>
                 <select
-                id="roomType"
+                requierd
+                className="form-select"
                 name="roomType"
-                value={newRoom.roomTypes}
                 onChange={(e) => {
                     if(e.target.value === "Add New"){
-                        setShowNewRoomTypesInput(true);
+                        setShowNewRoomTypeInput(true);
                     }
                     else{
                         handleNewRoomInputChange(e);
                     }
-                }}>
+                }}
+                    value={newRoom.roomType}>
                     <option value="">Select Room Type</option>
                     <option value={"Add New"}>Add New</option>
                     {roomTypes.map((type, index) => (
@@ -48,23 +57,23 @@ const RoomTypeSelector = ({ handleNewRoomInputChange, newRoom }) => {
                             {type}
                             </option>
                     ))}
-                </select>
-                {showNewRoomTypesInput && (
-                    <div className='input-group mt-2'>
-                        <input
-                          className="form-control"
-                          type="text" 
-                          onChange={handleNewRoomTypeInputChange} 
-                          placeholder="Enter new room type"
-                          />
-                          <button
-                           className="btn btn-hotel" 
-                           type='button' 
-                           onClick={handleAddNewRoomTypeChange}>
-                            Add
-                          </button>
-                    </div>
-                )}
+        	</select>
+					{showNewRoomTypeInput && (
+						<div className="mt-2">
+							<div className="input-group">
+								<input
+									type="text"
+									className="form-control"
+									placeholder="Enter New Room Type"
+									value={newRoomType}
+									onChange={handleNewRoomTypeInputChange}
+								/>
+								<button className="btn btn-hotel" type="button" onClick={handleAddNewRoomType}>
+									Add
+								</button>
+							</div>
+						</div>
+					)}
 
             </div>
         )}
