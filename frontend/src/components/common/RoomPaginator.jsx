@@ -12,22 +12,11 @@ const RoomPaginator = ({ currentPage, totalPage, onPageChange }) => {
                         >
                             {pageNumber}
                         </button>
-
-
-
-
                     </li>
-
-
-
                 ))}
-
-
             </ui>
-
-
-
-
         </nav>
     )
 }
+
+export default RoomPaginator
