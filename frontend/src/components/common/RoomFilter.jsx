@@ -1,5 +1,6 @@
 import { useState } from "react"
 
+
 const RoomFilter = ({ data, setFilteredData }) => {
     const [filter, setFilter] = useState("")
 
@@ -27,10 +28,12 @@ const RoomFilter = ({ data, setFilteredData }) => {
                 className="form-select"
                 valur={filter}
                 onChange={handleSelectChange}>
-                <option value={""}> select a room type to filter.... </option>
+                <option value={""}> 
+                    select a room type to filter.... 
+                </option>
                 {roomTypes.map((type, index) => (
-                    <option key={index} value={type}>
-                        {type}
+                    <option key={index} value={String(type)}>
+                        {String(type)}
                     </option>
                 ))}
             </select>
@@ -42,3 +45,5 @@ const RoomFilter = ({ data, setFilteredData }) => {
         </div>
     )
 }
+
+export default RoomFilter;
