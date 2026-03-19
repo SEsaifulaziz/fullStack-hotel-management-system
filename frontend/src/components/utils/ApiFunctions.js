@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL : "http://localhost:9192"
+    baseURL: import.meta.env.VITE_API_URL || "http://localhost:9192"
 })
 
 // this function add a new room to the database
@@ -37,7 +37,7 @@ export async function getRoomTypes() {
 // this function gets all rooms from the database
 export async function getAllRooms(){
     try{
-        const response = await api.get("/rooms/all-rooms");
+        const response = await api.get("/rooms/room/all-rooms");
         return response.data;
     }
     catch(error){
