@@ -5,7 +5,7 @@ import com.devsaif.backend.model.BookedRoom;
 import com.devsaif.backend.model.Room;
 import com.devsaif.backend.responseDto.BookingResponse;
 import com.devsaif.backend.responseDto.RoomResponse;
-import com.devsaif.backend.respository.RoomRepository;
+import com.devsaif.backend.respository.RoomRepository;  
 import com.devsaif.backend.service.BookingService;
 import com.devsaif.backend.service.IRoomService;
 import lombok.RequiredArgsConstructor;
