@@ -26,7 +26,7 @@ const RoomFilter = ({ data, setFilteredData }) => {
             </span>
             <select
                 className="form-select"
-                valur={filter}
+                value={filter}
                 onChange={handleSelectChange}>
                 <option value={""}> 
                     select a room type to filter.... 
